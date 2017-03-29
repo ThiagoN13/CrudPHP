@@ -171,4 +171,23 @@ function exibeInsert(){
 			}
 }
 
+function exibeUpdate2($livro){
+	$sql = mysql_query("SELECT * FROM livro where liv_id = $livro");
+	while($row = mysql_fetch_assoc($sql)){
+		echo "<form action='action.php?id=$livro' method='post'>
+			<label>Nome do livro</label><input type='text' name='titulo' required='True' value=". $row['liv_titulo'] ."></input><br/>
+			<label>Nome do autor</label><input type='text' name='autor' required='True' value=". $row['liv_autor'] ."></input><br/>
+			<label>Data de lançamento</label><input type='date' name='data_lanc' required='True' value=". $row['liv_data_lancamento'] ."></input><br/>
+			<label>Quantidade de copias</label><input type='number' min='1' name='quant' required='True' value=". $row['liv_quant_copias'] ."></input><br/>
+
+			<input type='submit' value='Enviar'></input>	
+		</form>";
+	}	
+}
+
+function update($id, $livro, $autor, $data, $copias){
+	$sql = mysql_query("UPDATE livro SET liv_titulo=$livro, liv_autor=$autor, liv_data_lancamento=$data, liv_quant_copias=$copias WHERE liv_id=$id");
+	header('location: ../view.php?act=view'); 
+}
+
 ?>

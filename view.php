@@ -2,8 +2,8 @@
 <html lang="pt-br">
 <head>
 <?php
- header("Content-type: text/html; charset=utf-8");
- require_once('includes/functions.php');
+ 	header("Content-type: text/html; charset=utf-8");
+ 	require_once('includes/functions.php');
 	session();
 ?>
 
@@ -17,13 +17,11 @@
 	<h2>CRUD em PHP</h2>
 	<div id="contents">
 
-		<?php 
-
-			
-$Act = $_GET['act'];
-	if($Act == 'update'){
-?>
-		<form action="includes/action.php?act=atualizaLivro" method="post">
+	<?php 	
+		$Act = $_GET['act'];
+			if($Act == 'update'){
+	?>
+		<form action="includes/action.php?act=listupdate" method="post">
 			<label>Livros</label>
 				<select name="book">
 				  <?php
@@ -35,7 +33,7 @@ $Act = $_GET['act'];
 	
 	<?php
 	}
-?>
+	?>
 
 
 
@@ -63,21 +61,23 @@ $Act = $_GET['act'];
 ?>
 	
 		<form action="includes/action.php?act=cadastrarLivro" method="post">
-			<label>Nome do livro</label><input type="text" name="titulo" required="True"></input><br/>
-			<label>Nome do autor</label><input type="text" name="autor" required="True"></input><br/>
+			<label>Nome do livro</label><input type="text" name="titulo" required="True" value=""></input><br/>
+			<label>Nome do autor</label><input type="text" name="autor" required="True" value=""></input><br/>
 			<label>Assunto</label><select name="assunto">
 			<?php
 				exibeInsert();
 			?>
 			</select>
-			<br/><label>Data de lançamento</label><input type="date" name="data_lanc" required="True"></input><br/>
-			<label>Quantidade de copias</label><input type="number" min="1" name="quant" required="True"></input><br/>
+			<br/><label>Data de lançamento</label><input type="date" name="data_lanc" required="True" value=""></input><br/>
+			<label>Quantidade de copias</label><input type="number" min="1" name="quant" required="True" value=""></input><br/>
 
 			<input type="submit" value="Enviar"></input>	
 		</form>
 <?php
 	}
 ?>
+
+
 
 <?php
 	if($Act == 'view'){
